@@ -1,0 +1,19 @@
+Name: Xiangzhen Sun
+
+Project: #3
+
+Description:
+	stack container is a general data collector that is equipped with convenient operations. In this project, instead of creating nodes structure or nested class as stack class 
+member data, I employed <list> from STL C++ to implement the Stack<T> generic class template. A great application of stack container was also proved by infix-postfix arithmetic 
+conversion practice. The whole program runs perfectly.
+
+Complexity Analysis:
+	As I said, the nested member class I used to implement Stack<T> container is STL list, which is a typical double-linked list class. Before giving my reasoning on Big-O, it 
+is necessary to reiterate some properties of double-linked list firstly.
+	Within each lists' node, there are basically two pointers referencing to the previous and next nodes of it, which gives us enough flexibility in accessing each nodes in a 
+list container. Besides, a global pointer 'iterator' is also provided for accessing each elements from outside. This makes deleting and inserting elements much easier than 
+single-linked list.
+	As one can see from my container implementation file .hpp, the Stack<T>::clear() member function is actully realized by calling the member function of 
+std::list<T>::clear(). In otherwords, the run-time analysis of Stack<T> container shares the same reasoning with std::list<T>. To be specific, in order to clear the Stack<T>, we 
+can not only delete the current node we are accessing to, but also delete the adjacent 2 nodes, i.e., *prev and *next at the same time. Because we have the pointers pointing to 
+them! Thus, the time complexity is constant in this case, i.e., O(1).
